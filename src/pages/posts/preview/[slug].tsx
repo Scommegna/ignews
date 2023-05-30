@@ -25,11 +25,11 @@ export default function PostPreview({ post }: PostPreviewProps) {
   const router = useRouter();
 
   // Redirects subscribed user to post page
-  useEffect(() => {
-    if (session?.activeSubscription) {
-      router.push(`/posts/${post.slug}`);
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session?.activeSubscription) {
+  //     router.push(`/posts/${post.slug}`);
+  //   }
+  // }, [session]);
 
   return (
     <>
