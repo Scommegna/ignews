@@ -18,7 +18,7 @@ export function SubscribeButton() {
     }
 
     // Redirects user that already has a subscription
-    if (session.activeSubscription) {
+    if (session?.activeSubscription) {
       router.push("/posts");
       return;
     }

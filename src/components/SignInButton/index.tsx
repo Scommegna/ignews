@@ -10,8 +10,6 @@ export function SignInButton() {
   // Gets session state from signIn and Out functions
   const { data: session } = useSession();
 
-  console.log(session);
-
   // Changes button stylization based on user authentication
   return session ? (
     <button
