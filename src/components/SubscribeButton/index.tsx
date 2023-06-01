@@ -3,11 +3,12 @@ import { useRouter } from "next/router";
 import { api } from "../../services/api";
 import { getStripeJs } from "../../services/stripe-js";
 import styles from "./styles.module.scss";
+import NextAuth from "../../pages/api/auth/[...nextauth]";
 
 // Subscription button component
 export function SubscribeButton() {
   // Gets data if user is logged in
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   async function handleSubscribe() {
@@ -17,9 +18,8 @@ export function SubscribeButton() {
       return;
     }
 
-    // active sub
     // Redirects user that already has a subscription
-    if (session) {
+    if (status === "authenticated") {
       router.push("/posts");
       return;
     }

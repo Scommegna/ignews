@@ -21,15 +21,15 @@ interface PostPreviewProps {
 
 // Post preview component
 export default function PostPreview({ post }: PostPreviewProps) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   // Redirects subscribed user to post page
-  // useEffect(() => {
-  //   if (session?.activeSubscription) {
-  //     router.push(`/posts/${post.slug}`);
-  //   }
-  // }, [session]);
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push(`/posts/${post.slug}`);
+    }
+  }, [session]);
 
   return (
     <>
